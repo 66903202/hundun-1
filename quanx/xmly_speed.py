@@ -18,14 +18,14 @@ from util import send, requests_session
 
 # 参考 https://github.com/Zero-S1/xmly_speed/blob/master/xmly_speed.py
 
-cookies1 = "domain=.ximalaya.com; path=/; channel=ios-b1; impl=com.ximalaya.tingLite; 1&_device=iPhone&023CA700-5417-4341-94D9-E738DD94D6BE&1.1.13; XUM=023CA700-5417-4341-94D9-E738DD94D6BE; idfa=00000000-0000-0000-0000-000000000000; device_model=iPhone 12; c-oper=%E6%9C%AA%E7%9F%A5; net-mode=WIFI; ip=2408:8506:126:177:b2:643:100:0; res=1170%2C2532; NSUP=; ainr=0; XD=6w0FgETqIKDt3tw4EOvUOVZcbNb09rkY4053nwwUnU0V1kPYIqQ27xzQP0j71V+86fvmSdt5+QEbMlXBY8yf2g==; 1&_token=177476793&439B6410240C9CE1A29CDEC2670B265EF15C07F3CC8CB351259B3AC07A854D6E43FCD5AB0FAC111M307478B89CA740E_"
+cookies1 = "domain=.ximalaya.com; path=/; channel=ios-b1; impl=com.ximalaya.tingLite; 1&_device=iPhone&3E4EEB98-C8C1-45B7-B215-3E43B0E8B7CB&2.1.3; XUM=3E4EEB98-C8C1-45B7-B215-3E43B0E8B7CB; idfa=3E4EEB98-C8C1-45B7-B215-3E43B0E8B7CB; device_model=iPhone 6 Plus; c-oper=%E6%9C%AA%E7%9F%A5; net-mode=WIFI; ip=192.168.0.102; res=1242%2C2208; NSUP=; ainr=0; XD=gE33ADz4KaTUJWiiN6an8r/Izt+duzTTd9pIIvDWtzwoH5CUCID1lJJBrkXmA8eK+xZbvoj5hWs2MvCoQHZazQ==; 1&_token=297957245&DBB64840340C74027282058034DF8460333EEA7FCB410C9D18513467BD3B304179FCDA84C236110M4812E3CC283FC5A_"
 
 cookies2 = ""
 
 cookiesList = [cookies1, ]   # 多账号准备
 
 # 默认不自动提现
-autoTakeOut = False
+autoTakeOut = true
 # 提现金额
 amount = 20
 takeOutType = 1
