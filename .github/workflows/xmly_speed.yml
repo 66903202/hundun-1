@@ -33,7 +33,7 @@ jobs:
       - name: '运行 【喜马拉雅极速版】'
         if: env.XMLY_SPEED_COOKIE
         run: |
-          cd ~/huntun-1
+          cd ~/hundun-1
           node quanx/xmly_speed.js
         env:
           
