@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/66903202/huntun-1.git ~/huntun-1
+          git clone https://github.com/66903202/hundun-1.git ~/hundun-1
       - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -28,7 +28,7 @@ jobs:
       - name: npm install
         if: env.XMLY_SPEED_COOKIE
         run: |
-          cd ~/huntun-1
+          cd ~/hundun-1
           npm install
       - name: '运行 【喜马拉雅极速版】'
         if: env.XMLY_SPEED_COOKIE
