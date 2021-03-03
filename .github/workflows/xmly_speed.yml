@@ -1,46 +1,33 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: 喜马拉雅极速版
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/30 * * * *'
+    - cron: '*/30 * * * * '
   watch:
-    types: started
+    types: [started]
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
-    env:
-        
-        XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}
-        AUTO_TAKE_OUT: ${{ secrets.AUTO_TAKE_OUT }}
     steps:
       - name: Checkout
-        run: |
-          git clone https://github.com/66903202/hundun-1.git ~/hundun-1
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
+        uses: actions/checkout@v2
+        
+      - name: 'Set up Python'
+        uses: actions/setup-python@v1
         with:
-          node-version: 12.x
-      - name: npm install
-        if: env.XMLY_SPEED_COOKIE
-        run: |
-          cd ~/hundun-1
-          npm install
-      - name: '运行 【喜马拉雅极速版】'
-        if: env.XMLY_SPEED_COOKIE
-        run: |
-          cd ~/hundun-1
-          node quanx/xmly_speed.js
+          python-version: 3.7
+         
+      - name: 'Install requirements'
+        run: pip install -r ./requirements.txt 
+        
+      - name: 'run 喜马拉雅极速版' 
+        run: python3 xmly_speed.py 
         env:
-          
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
+            XMLY_SPEED_COOKIE: ${{ secrets.XMLY_SPEED_COOKIE }}  #必须
+            # XMLY_ACCUMULATE_TIME: ${{ secrets.XMLY_ACCUMULATE_TIME }} #非私密信息，去掉
+            BARK: ${{ secrets.BARK }}     # bark服务
+            SCKEY: ${{ secrets.SCKEY }}   # server酱服务
+            TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}} # tg通知token
+            TG_USER_ID:  ${{secrets.TG_USER_ID}}    # tg通知id
+    
